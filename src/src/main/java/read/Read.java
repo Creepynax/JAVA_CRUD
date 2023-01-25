@@ -1,20 +1,21 @@
-package com.codingf.main.read;
+package read;
 
 import java.sql.*;
 public class Read {
 
-    String url = "jdbc:mysql://localhost:3306/mydatabase";
+    String url = "jdbc:mysql://localhost:3306/sakila";
     String username = "root";
-    String password = "password";
-    String selectSql = "SELECT * FROM users";
+    String password = "";
+    String selectSql = "SELECT * FROM pays";
+
     try (Connection connection = DriverManager.getConnection(url, username, password)) {
         try (Statement statement = connection.createStatement()) {
             try (ResultSet resultSet = statement.executeQuery(selectSql)) {
                 while (resultSet.next()) {
                     int id = resultSet.getInt("id");
-                    String name = resultSet.getString("name");
-                    String email = resultSet.getString("email");
-                    System.out.println("id: " + id + ", name: " + name + ", email: " + email);
+                    String pays = resultSet.getString("pays");
+                    String ville = resultSet.getString("ville");
+                    System.out.println("id: " + id + ", pays: " + pays + ", ville: " + ville);
                 }
             }
         }
