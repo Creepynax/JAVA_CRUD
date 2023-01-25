@@ -3,11 +3,8 @@ package update;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-
 public class Update {
-
     static String updateSql = "UPDATE pays SET ville = ? WHERE id = ?";
-
     public static void Update() {
 
     ResourceBundle bundle = ResourceBundle.getBundle("db");

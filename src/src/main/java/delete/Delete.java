@@ -4,9 +4,7 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 public class Delete {
-
-    String deleteSql = "DELETE FROM ville WHERE id = ?";
-
+    static String deleteSql = "DELETE FROM ville WHERE id = ?";
     public static void Delete() {
 
         ResourceBundle bundle = ResourceBundle.getBundle("db");
