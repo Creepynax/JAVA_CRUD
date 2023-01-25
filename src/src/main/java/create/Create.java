@@ -10,8 +10,8 @@ public class Create {
 
     try (Connection connection = DriverManager.getConnection(url, username, password)) {
         try (PreparedStatement statement = connection.prepareStatement(insertSql)) {
-            statement.setString(1, "John Doe");
-            statement.setString(2, "johndoe@example.com");
+            statement.setString(1, "France");
+            statement.setString(2, "Paris");
             int rowsAffected = statement.executeUpdate();
             System.out.println(rowsAffected + " Colonne(s) affecté(s).");
         }
