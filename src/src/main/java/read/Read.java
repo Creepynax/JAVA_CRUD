@@ -1,25 +1,27 @@
 package read;
 
 import java.sql.*;
+import java.util.ResourceBundle;
+
 public class Read {
+    static String selectSql = "SELECT * FROM pays";
 
-    String url = "jdbc:mysql://localhost:3306/sakila";
-    String username = "root";
-    String password = "";
-    String selectSql = "SELECT * FROM pays";
+    public static void Read() {
 
-    try (Connection connection = DriverManager.getConnection(url, username, password)) {
-        try (Statement statement = connection.createStatement()) {
-            try (ResultSet resultSet = statement.executeQuery(selectSql)) {
-                while (resultSet.next()) {
-                    int id = resultSet.getInt("id");
-                    String pays = resultSet.getString("pays");
-                    String ville = resultSet.getString("ville");
-                    System.out.println("id: " + id + ", pays: " + pays + ", ville: " + ville);
+        ResourceBundle bundle = ResourceBundle.getBundle("db");
+        try (Connection connection = DriverManager.getConnection("db.host", "db.user", "db.pass")) {
+            try (Statement statement = connection.createStatement()) {
+                try (ResultSet resultSet = statement.executeQuery(selectSql)) {
+                    while (resultSet.next()) {
+                        int id = resultSet.getInt("id");
+                        String pays = resultSet.getString("pays");
+                        String ville = resultSet.getString("ville");
+                        System.out.println("id: " + id + ", pays: " + pays + ", ville: " + ville);
+                    }
                 }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
     }
 }
