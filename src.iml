@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
+    <output url="file://$MODULE_DIR$/src/target/classes" />
+    <output-test url="file://$MODULE_DIR$/src/target/test-classes" />
+    <content url="file://$MODULE_DIR$/src">
+      <sourceFolder url="file://$MODULE_DIR$/src/src/main/java" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/src/src/test" />
+      <excludeFolder url="file://$MODULE_DIR$/src/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: com.mysql:mysql-connector-j:8.0.32" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.21.9" level="project" />
+  </component>
+</module>
