@@ -1,9 +1,12 @@
 package com.codingf.menus;
 
+import java.sql.SQLException;
 import java.util.Scanner;
+
+import com.codingf.delete.Delete;
 import com.codingf.read.Read;
 public class Menus {
-    public static void MenuPrincipal() {
+    public static void MenuPrincipal() throws SQLException {
         Scanner input = new Scanner(System.in);
         System.out.print("Choisissez une table dans laquelle vous voulez aller\n" +
                 "\n[1] Actor \n" +
@@ -37,9 +40,7 @@ public class Menus {
             int choixMenuTable = 0;
             try {
                 choixMenuTable = Integer.parseInt(choix);
-                if (choixMenuTable == 1 || choixMenuTable == 2 || choixMenuTable == 3 || choixMenuTable == 4 || choixMenuTable == 5 || choixMenuTable == 6 || choixMenuTable == 7 || choixMenuTable == 8 || choixMenuTable == 9 || choixMenuTable == 10
-                        || choixMenuTable == 11 || choixMenuTable == 12 || choixMenuTable == 13 || choixMenuTable == 14 || choixMenuTable == 15 || choixMenuTable == 16 || choixMenuTable == 17 || choixMenuTable == 18 || choixMenuTable == 19 || choixMenuTable == 20
-                        || choixMenuTable == 21 || choixMenuTable == 22 || choixMenuTable == 23 || choixMenuTable == 24) {
+                if (choixMenuTable > 0 && choixMenuTable <= 24) {
                     repeat = true;
                 } else {
                     System.err.println("Vous n'avez pas pris un des choix disponible\n");
@@ -49,6 +50,7 @@ public class Menus {
             }
             String nom = "";
             int nbChamps = 0;
+            int nbChampsTotal = 0;
             if (choixMenuTable == 1) {
                 nom = "actor";
                 nbChamps = 2;
@@ -147,7 +149,7 @@ public class Menus {
             }
         }
     }
-    public static void MenuOperations(String nom, int nbChamps){
+    public static void MenuOperations(String nom, int nbChamps) throws SQLException {
         Scanner input = new Scanner(System.in);
         System.out.print("\nQue voulez-vous faire dans la table " + nom + "?\n" +
                 "\n[1] Créer un élément \n" +
@@ -162,7 +164,7 @@ public class Menus {
             int choixOperation = 0;
             try {
                 choixOperation = Integer.parseInt(choix);
-                if (choixOperation == 1 || choixOperation == 2 || choixOperation == 3 || choixOperation == 4 || choixOperation == 5){
+                if (choixOperation > 0 && choixOperation <= 5){
                     repeat = true;
                 } else {
                     System.err.println("Vous n'avez pas pris un des choix disponible\n");
@@ -174,10 +176,12 @@ public class Menus {
                 System.out.println("Créer");
             } else if (choixOperation == 2) {
                 Read.Read(nom);
+                MenuOperations(nom, nbChamps);
             } else if (choixOperation == 3) {
                 System.out.println("Modifier");
             } else if (choixOperation == 4) {
-                System.out.println("Supprimer");
+                Delete.Delete(nom);
+                MenuOperations(nom, nbChamps);
             } else if (choixOperation == 5) {
                 MenuPrincipal();
             }
