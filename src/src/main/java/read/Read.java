@@ -9,7 +9,7 @@ public class Read {
     public static void Read() {
 
         ResourceBundle bundle = ResourceBundle.getBundle("db");
-        try (Connection connection = DriverManager.getConnection("db.host", "db.user", "db.pass")) {
+        try (Connection connection = DriverManager.getConnection(bundle.getString("db.host"), bundle.getString("db.user"), bundle.getString("db.pass"))) {
             try (Statement statement = connection.createStatement()) {
                 try (ResultSet resultSet = statement.executeQuery(selectSql)) {
                     while (resultSet.next()) {

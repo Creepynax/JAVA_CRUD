@@ -8,7 +8,7 @@ public class Update {
     public static void Update() {
 
     ResourceBundle bundle = ResourceBundle.getBundle("db");
-        try (Connection connection = DriverManager.getConnection("db.host", "db.user", "db.pass")) {
+        try (Connection connection = DriverManager.getConnection(bundle.getString("db.host"), bundle.getString("db.user"), bundle.getString("db.pass"))) {
             try (PreparedStatement statement = connection.prepareStatement(updateSql)) {
                 statement.setString(1, "Paris");
                 statement.setInt(2, 1);
