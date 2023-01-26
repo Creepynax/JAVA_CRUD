@@ -3,6 +3,9 @@ package com.codingf.connexiondb;
 import java.sql.*;
 import java.util.ResourceBundle;
 public class ConnexionDB {
+
+    // méthode qui fait toute la liaison à la page de donnée Sakila
+    // la méthode ne prend pas de paramètre et renvoie connection qui permet de faire une connexion à la base de donnée
     public static Connection connexionDB() throws SQLException{
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
