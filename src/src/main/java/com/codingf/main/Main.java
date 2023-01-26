@@ -1,8 +1,14 @@
 package com.codingf.main;
 
-public class Main {
-    public static void main(String[] args) {
+import com.codingf.connexiondb.ConnexionDB;
+import com.codingf.menus.Menus;
 
-        System.out.println("Hello world!");
+import java.sql.SQLException;
+
+public class Main {
+    public static void main(String[] args) throws SQLException {
+        ConnexionDB.connexionDB();
+        //System.out.println("\n          Bienvenue dans la base de donnée d'apprentissage Sakila\n");
+        //Menus.MenuPrincipal();
     }
 }

@@ -1,4 +1,4 @@
-package read;
+package com.codingf.read;
 
 import java.sql.*;
 import java.util.ResourceBundle;
