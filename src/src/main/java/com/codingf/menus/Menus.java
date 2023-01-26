@@ -1,13 +1,14 @@
 package com.codingf.menus;
 
 import java.util.Scanner;
+import com.codingf.read.Read;
 public class Menus {
     public static void MenuPrincipal() {
         Scanner input = new Scanner(System.in);
         System.out.print("Choisissez une table dans laquelle vous voulez aller\n" +
                 "\n[1] Actor \n" +
                 "[2] Actor_info\n" +
-                "[3] Adress\n" +
+                "[3] Address\n" +
                 "[4] Category\n" +
                 "[5] City\n" +
                 "[6] Country\n" +
@@ -46,85 +47,109 @@ public class Menus {
             } catch (Exception e) {
                 System.err.println("Vous n'avez pas rentré un nombre, veuillez réessayer\n");
             }
-            String resultat = "";
+            String nom = "";
+            int nbChamps = 0;
             if (choixMenuTable == 1) {
-                resultat = "actor";
-                MenuOperations(resultat);
+                nom = "actor";
+                nbChamps = 2;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 2) {
-                resultat = "actor_info";
-                MenuOperations(resultat);
+                nom = "actor_info";
+                nbChamps = 2;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 3) {
-                resultat = "adress";
-                MenuOperations(resultat);
+                nom = "address";
+                nbChamps = 5;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 4) {
-                resultat = "category";
-                MenuOperations(resultat);
+                nom = "category";
+                nbChamps = 1;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 5) {
-                resultat = "city";
-                MenuOperations(resultat);
+                nbChamps = 1;
+                nom = "city";
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 6) {
-                resultat = "country";
-                MenuOperations(resultat);
+                nom = "country";
+                nbChamps = 1;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 7) {
-                resultat = "customer";
-                MenuOperations(resultat);
+                nom = "customer";
+                nbChamps = 3;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 8) {
-                resultat = "customer_list";
-                MenuOperations(resultat);
+                nom = "customer_list";
+                nbChamps = 6;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 9) {
-                resultat = "film";
-                MenuOperations(resultat);
+                nom = "film";
+                nbChamps = 4;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 10) {
-                resultat = "film_actor";
-                MenuOperations(resultat);
+                nom = "film_actor";
+                nbChamps = 0;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 11) {
-                resultat = "film_category";
-                MenuOperations(resultat);
+                nom = "film_category";
+                nbChamps = 0;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 12) {
-                resultat = "film_list";
-                MenuOperations(resultat);
+                nom = "film_list";
+                nbChamps = 6;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 13) {
-                resultat = "film_text";
-                MenuOperations(resultat);
+                nom = "film_text";
+                nbChamps = 2;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 14) {
-                resultat = "inventory";
-                MenuOperations(resultat);
+                nom = "inventory";
+                nbChamps = 0;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 15) {
-                resultat = "language";
-                MenuOperations(resultat);
+                nom = "language";
+                nbChamps = 1;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 16) {
-                resultat = "nicer_but_slower_film_list";
-                MenuOperations(resultat);
+                nom = "nicer_but_slower_film_list";
+                nbChamps = 6;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 17) {
-                resultat = "payment";
-                MenuOperations(resultat);
+                nom = "payment";
+                nbChamps = 1;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 18) {
-                resultat = "rental";
-                MenuOperations(resultat);
+                nom = "rental";
+                nbChamps = 0;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 19) {
-                resultat = "sales_by_film_category";
-                MenuOperations(resultat);
+                nom = "sales_by_film_category";
+                nbChamps = 0;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 20) {
-                resultat = "sales_by_store";
-                MenuOperations(resultat);
+                nom = "sales_by_store";
+                nbChamps = 0;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 21) {
-                resultat = "staff";
-                MenuOperations(resultat);
+                nom = "staff";
+                nbChamps = 4;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 22) {
-                resultat = "staff_list";
-                MenuOperations(resultat);
+                nom = "staff_list";
+                nbChamps = 5;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 23) {
-                resultat = "store";
-                MenuOperations(resultat);
+                nom = "store";
+                nbChamps = 0;
+                MenuOperations(nom, nbChamps);
             } else if (choixMenuTable == 24){
                 System.out.println("\nAu plaisir de vous revoir prochainement");
                 System.exit(0);
             }
         }
     }
-    public static void MenuOperations(String resultat){
+    public static void MenuOperations(String nom, int nbChamps){
         Scanner input = new Scanner(System.in);
-        System.out.print("\nQue voulez-vous faire dans la table " + resultat + "?\n" +
+        System.out.print("\nQue voulez-vous faire dans la table " + nom + "?\n" +
                 "\n[1] Créer un élément \n" +
                 "[2] Consulter la table \n" +
                 "[3] Modifier un élément \n" +
@@ -148,7 +173,7 @@ public class Menus {
             if (choixOperation == 1) {
                 System.out.println("Créer");
             } else if (choixOperation == 2) {
-                System.out.println("Consulter");
+                Read.Read(nom);
             } else if (choixOperation == 3) {
                 System.out.println("Modifier");
             } else if (choixOperation == 4) {

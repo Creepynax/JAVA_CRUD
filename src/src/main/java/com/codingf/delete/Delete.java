@@ -1,17 +1,17 @@
-package update;
+package com.codingf.delete;
 
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class Update {
-    static String updateSql = "UPDATE pays SET ville = ? WHERE id = ?";
-    public static void Update() {
+public class Delete {
+    public static void Delete(String nom) {
 
-    ResourceBundle bundle = ResourceBundle.getBundle("db");
+        String deleteSql = "DELETE FROM " + nom + " WHERE id = ?";
+
+        ResourceBundle bundle = ResourceBundle.getBundle("db");
         try (Connection connection = DriverManager.getConnection("db.host", "db.user", "db.pass")) {
-            try (PreparedStatement statement = connection.prepareStatement(updateSql)) {
-                statement.setString(1, "Paris");
-                statement.setInt(2, 1);
+            try (PreparedStatement statement = connection.prepareStatement(deleteSql)) {
+                statement.setInt(1, 1);
                 int rowsAffected = statement.executeUpdate();
                 System.out.println(rowsAffected + " Colonne(s) affecté(s).");
             }
