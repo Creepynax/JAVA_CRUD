@@ -29,7 +29,7 @@ public class Delete {
             counter = count.getInt(1);
         }
 
-        System.out.println("\nChoisissez l'id de la valeur du champ que vous voulez supprimer");
+        System.out.println("\nChoisissez l'id de la valeur du tuple que vous voulez supprimer");
         boolean repeat = false;
         int choixDelete = 0;
 
@@ -60,12 +60,10 @@ public class Delete {
         // si oui, elle renvoie un message de succès à l'utilisateur
         // sinon, elle renvoie un message pour lui dire ce qu'il s'est passé
         try {
-            boolean result = stmt.execute("DELETE FROM " + nom + " WHERE "+ nom +"_id = " + choixDelete);
-            if (result) {
-                System.out.println("\nLa ligne " + choixDelete + " a bien été supprimée");
-            }
+            stmt.execute("DELETE FROM " + nom + " WHERE "+ nom +"_id = " + choixDelete);
+                System.out.println("\nLe tuple dont l'id est " + choixDelete + " a bien été supprimée");
         } catch (SQLIntegrityConstraintViolationException e) {
-            System.out.println("\nLa ligne " + choixDelete + " n'a pas été supprimée car elle est reliée à une autre table");
+            System.out.println("\nLa tuple dont l'id est " + choixDelete + " n'a pas été supprimée car il est reliée à une autre table");
         }
 
         // ferme-les connections

@@ -1,23 +1,27 @@
 package com.codingf.update;
 
+import com.codingf.connexiondb.ConnexionDB;
+import com.codingf.read.Read;
 import java.sql.*;
-import java.util.ResourceBundle;
-import java.sql.SQLException;
+import java.util.Scanner;
 
 public class Update {
-    public static void Update(String nom, int nbChamps) {
-        String updateSql = "UPDATE pays SET ville = ? WHERE id = ?";
+    public static void Update(String nom, String[] nbTotalChamps, String[] nomChamps) throws SQLException {
+        if (nom.equals("film_actor") || nom.equals("inventory") || nom.equals("store") || nom.equals("film_category")) {
+            System.out.println("\nNous sommes navrés, vous ne pouvez pas modifier des tuples dans cette table, sans provoquer des problèmes");
+        } else {
+            Scanner string = new Scanner(System.in);
+            Read.Read(nom, nomChamps);
 
-        ResourceBundle bundle = ResourceBundle.getBundle("db");
-        try (Connection connection = DriverManager.getConnection("db.host", "db.user", "db.pass")) {
-            try (PreparedStatement statement = connection.prepareStatement(updateSql)) {
-                statement.setString(1, "Paris");
-                statement.setInt(2, 1);
-                int rowsAffected = statement.executeUpdate();
-                System.out.println(rowsAffected + " Colonne(s) affecté(s).");
+            // fait la connexion à la bdd Sakila
+            Connection connection = ConnexionDB.connexionDB();
+            Statement stmt = connection.createStatement();
+
+            try {
+
+            } catch (Exception e) {
+
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
