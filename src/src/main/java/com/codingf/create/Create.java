@@ -8,12 +8,12 @@ import java.util.Scanner;
 
 
 public class Create {
-    public static void Create(String nom, String[] TotalChamps, String[] nomChamps) throws SQLException {
+    public static void Create(String nom, String[] nbTotalChamps, String[] nomChamps) throws SQLException {
         if (nom.equals("film_actor") || nom.equals("inventory") || nom.equals("strore") || nom.equals("film_category")) {
-            System.out.println("\nNous sommes navrés, vous ne pouvez pas créer de nouveaux champs dans cette table");
+            System.out.println("\nNous sommes navrés, vous ne pouvez pas créer de nouveaux tuples dans cette table");
         } else {
             Scanner string = new Scanner(System.in);
-            System.out.println("\nVoici un exemple d'un champ de la table " + nom + "\n");
+            System.out.println("\nVoici un exemple d'un tuple de la table " + nom + "\n");
 
             // fait la connexion à la bdd Sakila
             Connection connection = ConnexionDB.connexionDB();
@@ -32,13 +32,13 @@ public class Create {
                 }
             }
 
-            System.out.println("\nVous allez devoir rentrer les valeurs des données de votre champ");
+            System.out.println("\nVous allez devoir rentrer les valeurs des données de votre tuple");
             System.out.println("Seul les champs que vous pouvez remplir vous seront demandés");
             StringBuilder values = new StringBuilder("`" + nom + "_id`");
             StringBuilder donneesValues = new StringBuilder("NULL");
 
-            for (int j = 1; j < TotalChamps.length; j++) {
-                if (TotalChamps[j] == "?") {
+            for (int j = 1; j < nbTotalChamps.length; j++) {
+                if (nbTotalChamps[j] == "?") {
                     System.out.print("\nEntrez la valeur de la donnée [" + nomChamps[j] + "] : ");
 
                     // récupère la valeur que l'utilisateur a rentrée
@@ -46,24 +46,24 @@ public class Create {
                     donneesValues.append(", '").append(choix).append("'");
                     values.append(", `").append(nomChamps[j]).append("`");
 
-                } else if (TotalChamps[j] == "CURRENT_TIMESTAMP") {
-                    donneesValues.append(", ").append(TotalChamps[j]);
+                } else if (nbTotalChamps[j] == "CURRENT_TIMESTAMP") {
+                    donneesValues.append(", ").append(nbTotalChamps[j]);
                     values.append(", `").append(nomChamps[j]).append("`");
 
-                } else if (TotalChamps[j] == "NULL"){
-                    donneesValues.append(", ").append(TotalChamps[j]);
+                } else if (nbTotalChamps[j] == "NULL"){
+                    donneesValues.append(", ").append(nbTotalChamps[j]);
                     values.append(", `").append(nomChamps[j]).append("`");
 
                 } else {
-                    donneesValues.append(", ").append(TotalChamps[j]);
+                    donneesValues.append(", ").append(nbTotalChamps[j]);
                     values.append(", `").append(nomChamps[j]).append("`");
                 }
             }
             try {
                 stmt.execute("INSERT INTO `" + nom + "` (" + values + ") VALUES (" + donneesValues + ");");
-                    System.out.println("\nVotre champ a bien été crée dans la table " + nom);
+                    System.out.println("\nVotre tuple a bien été crée dans la table " + nom);
             } catch (SQLIntegrityConstraintViolationException e) {
-                System.out.println("\nVotre champ n'a pas pu être créée dans la table " + nom + ", nous somme désolé");
+                System.out.println("\nVotre tuple n'a pas pu être créée dans la table " + nom);
             }
         }
     }

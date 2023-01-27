@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.codingf.create.Create;
 import com.codingf.delete.Delete;
 import com.codingf.read.Read;
+import com.codingf.update.Update;
 public class Menus {
 
     // méthode MenuPrincipal qui ne prend pas d'argument et ne renvoie rien
@@ -225,10 +226,10 @@ public class Menus {
             }
         } else {
             System.out.print("\nQue voulez-vous faire dans la table " + nom + "?\n" +
-                    "\n[1] Créer un élément \n" +
+                    "\n[1] Créer un tuple \n" +
                     "[2] Consulter la table \n" +
-                    "[3] Modifier un élément \n" +
-                    "[4] Supprimer un élément \n" +
+                    "[3] Modifier un tuple \n" +
+                    "[4] Supprimer un tuple \n" +
                     "[5] Retourner en arrière\n");
             boolean repeat = false;
 
@@ -266,7 +267,7 @@ public class Menus {
 
                 // emmène l'utilisateur dans la méthode Update de la classe Update
                 } else if (choixOperation == 3) {
-                    System.out.println("Modifier");
+                    Update.Update(nom, nbTotalChamps, nomChamps);
                     MenuOperations(nom, nbTotalChamps, nomChamps);
 
                 // emmène l'utilisateur dans la méthode Delete de la classe Delete
