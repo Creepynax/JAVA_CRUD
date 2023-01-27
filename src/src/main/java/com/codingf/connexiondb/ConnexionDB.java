@@ -3,15 +3,16 @@ package com.codingf.connexiondb;
 import java.sql.*;
 import java.util.ResourceBundle;
 public class ConnexionDB {
-    public static void connexionDB() throws SQLException{
-        System.out.println("Application Sakila");
+
+    // méthode qui fait toute la liaison à la page de donnée Sakila
+    // la méthode ne prend pas de paramètre et renvoie connection qui permet de faire une connexion à la base de donnée
+    public static Connection connexionDB() throws SQLException{
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
         }catch (ClassNotFoundException e){
             System.out.println("Errorloadingdriver");
             System.exit(-1);
         }
-        System.out.println("Le driver est chargé!!!!!!!!");
 
         ResourceBundle bundle = ResourceBundle.getBundle("db");
 
@@ -25,17 +26,7 @@ public class ConnexionDB {
         String username="root";
         String password="";
 
-        Connection connection =
-                DriverManager.getConnection(URL,username,password);
-        if (connection==null) {
-            System.err.println("Erreur de connexion!!!");
-        }else {
-            System.out.println("connexion etablie");
-        }
-        DatabaseMetaData dbMetaData=connection.getMetaData();
-        String productName=dbMetaData.getDatabaseProductName();
-        System.out.println("Database: "+productName);
-        String productVersion=dbMetaData.getDatabaseProductVersion();
-        System.out.println("Version: "+productVersion);
+        Connection connection = DriverManager.getConnection(URL,username,password);
+        return connection;
     }
 }
