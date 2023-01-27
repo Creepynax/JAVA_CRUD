@@ -32,5 +32,8 @@ public class Read {
             }
             System.out.println("======================================");
         }
+        // ferme-les connections
+        stmt.close();
+        connection.close();
     }
 }

@@ -65,6 +65,9 @@ public class Create {
             } catch (SQLIntegrityConstraintViolationException e) {
                 System.out.println("\nVotre tuple n'a pas pu être créée dans la table " + nom);
             }
+            // ferme-les connections
+            stmt.close();
+            connection.close();
         }
     }
 }
