@@ -2,6 +2,7 @@ package com.codingf.update;
 
 import java.sql.*;
 import java.util.ResourceBundle;
+import java.sql.SQLException;
 
 public class Update {
     public static void Update(String nom, int nbChamps) {
@@ -19,4 +20,8 @@ public class Update {
             e.printStackTrace();
         }
     }
+
+
+
+
 }
