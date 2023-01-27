@@ -6,6 +6,7 @@ import com.codingf.read.Read;
 import java.sql.*;
 import java.util.Scanner;
 
+
 public class Update {
     public static void Update(String nom, String[] nbTotalChamps, String[] nomChamps) throws SQLException {
         if (nom.equals("film_actor") || nom.equals("inventory") || nom.equals("store") || nom.equals("film_category")) {
@@ -34,4 +35,8 @@ public class Update {
             }
         }
     }
+
+
+
+
 }
