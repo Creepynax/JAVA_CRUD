@@ -75,29 +75,36 @@ public class Menus {
                 nomChamps = new String[]{"actor_id", "first_name", "last_name", "last_update"};
                 nbTotalChamps = new String[]{"NULL", "?", "?", "CURRENT_TIMESTAMP"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 2) {
                 nom = "actor_info";
+                nomChamps = new String[]{"actor_id", "first_name", "last_name", "film_info"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 3) {
                 nom = "address";
                 nomChamps = new String[]{"address_id", "address", "address2", "district", "city_id", "postal_code", "phone", "location", "last_update"};
                 nbTotalChamps = new String[]{"NULL","?","NULL","?","1","?","?","0x0000AHDCN10100000009C3802557204DC0B75CA21FB25C41C0","CURRENT_TIMESTAMP"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 4) {
                 nom = "category";
                 nomChamps = new String[]{"category_id", "name", "last_update"};
                 nbTotalChamps = new String[]{"NULL","?","CURRENT_TIMESTAMP"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 5) {
                 nom = "city";
                 nomChamps = new String[]{"city_id", "city", "country_id", "last_update"};
                 nbTotalChamps = new String[]{"NULL","?","12","CURRENT_TIMESTAMP"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 6) {
                 nom = "country";
                 nomChamps = new String[]{"country_id", "country", "last_update"};
                 nbTotalChamps = new String[]{"NULL","?","CURRENT_TIMESTAMP"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 7) {
                 nom = "customer";
                 nomChamps = new String[]{"customer_id", "store_id", "first_name", "last_in", "email", "address_id", "active", "create_date", "last_update"};
@@ -105,67 +112,88 @@ public class Menus {
                 MenuOperations(nom, nbTotalChamps, nomChamps);
             } else if (choixMenuTable == 8) {
                 nom = "customer_list";
+                nomChamps = new String[]{"ID", "name", "address", "zip code", "phone", "city", "country", "notes", "SID"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 9) {
                 nom = "film";
                 nomChamps = new String[]{"film_id", "title", "description", "release_year", "language_id", "original_language_id", "rental_duration", "rental_rate", "length", "replacement_cost", "rating", "special_features", "last_update"};
                 nbTotalChamps = new String[]{"NULL","?","?","?","1","NULL","?","?","?","?","?","?","CURRENT_TIMESTAMP"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 10) {
                 nom = "film_actor";
                 nomChamps = new String[]{"actor_id", "film_id", "last_update"};
                 nbTotalChamps = new String[]{"1","1","CURRENT_TIMESTAMP"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 11) {
                 nom = "film_category";
                 nomChamps = new String[]{"film_id", "category_id", "last_update"};
                 nbTotalChamps = new String[]{"1","1","CURRENT_TIMESTAMP"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 12) {
                 nom = "film_list";
+                nomChamps = new String[]{"FID", "title", "description", "category", "price", "length", "rating", "actors"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 13) {
                 nom = "film_text";
                 nomChamps = new String[]{"film_id", "title", "description"};
                 nbTotalChamps = new String[]{"NULL","?","?"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 14) {
                 nom = "inventory";
                 nomChamps = new String[]{"inventory_id", "film_id", "store_id", "last_update"};
                 nbTotalChamps = new String[]{"NULL","1","2","CURRENT_TIMESTAMP"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 15) {
                 nom = "language";
                 nomChamps = new String[]{"language_id", "name", "last_update"};
                 nbTotalChamps = new String[]{"NULL","?","CURRENT_TIMESTAMP"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 16) {
                 nom = "nicer_but_slower_film_list";
+                nomChamps = new String[]{"FID", "title", "description", "category", "price", "length", "rating", "actors"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 17) {
                 nom = "payment";
                 nomChamps = new String[]{"payment_id", "customer_id", "staff_id", "rental_id", "amount", "payment_date", "last_update"};
                 nbTotalChamps = new String[]{"NULL","1","2","2332","?","CURRENT_TIMESTAMP","CURRENT_TIMESTAMP"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 18) {
                 nom = "rental";
                 nomChamps = new String[]{"rental_id", "rental_date", "inventory_id", "customer_id", "return_date", "staff_id", "last_update"};
                 nbTotalChamps = new String[]{"NULL","CURRENT_TIMESTAMP","1312","101","CURRENT_TIMESTAMP","1","CURRENT_TIMESTAMP"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 19) {
                 nom = "sales_by_film_category";
+                nomChamps = new String[]{"category", "total_sales"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 20) {
                 nom = "sales_by_store";
+                nomChamps = new String[]{"store", "manager", "total_sales"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 21) {
                 nom = "staff";
                 nomChamps = new String[]{"staff_id", "first_name", "last_name", "address_id", "picture", "email", "store_id", "active", "username", "password", "last_update"};
                 nbTotalChamps = new String[]{"NULL","?","?","45","NULL","?","3","1","?","?","CURRENT_TIMESTAMP"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 22) {
                 nom = "staff_list";
+                nomChamps = new String[]{"ID", "name", "address", "zip code", "phone", "city", "country", "SID"};
                 MenuOperations(nom, nbTotalChamps, nomChamps);
+
             } else if (choixMenuTable == 23) {
                 nom = "store";
                 nomChamps = new String[]{"store_id", "manager_staff_id", "address_id", "last_update"};
@@ -215,7 +243,6 @@ public class Menus {
                     System.err.println("Vous n'avez pas rentré un nombre, veuillez réessayer\n");
                 }
                 if (choixOperation == 1) {
-
                     Read.Read(nom, nomChamps);
                     MenuOperations(nom, nbTotalChamps, nomChamps);
 

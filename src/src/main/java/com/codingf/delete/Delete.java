@@ -61,9 +61,9 @@ public class Delete {
         // sinon, elle renvoie un message pour lui dire ce qu'il s'est passé
         try {
             stmt.execute("DELETE FROM " + nom + " WHERE "+ nom +"_id = " + choixDelete);
-                System.out.println("\nLe tuple dont l'id est " + choixDelete + " a bien été supprimée");
+                System.out.println("\nLe tuple dont l'id est " + choixDelete + " a bien été supprimé");
         } catch (SQLIntegrityConstraintViolationException e) {
-            System.out.println("\nLa tuple dont l'id est " + choixDelete + " n'a pas été supprimée car il est reliée à une autre table");
+            System.out.println("\nLa tuple dont l'id est " + choixDelete + " n'a pas été supprimé car il est reliée à une autre table");
         }
 
         // ferme-les connections

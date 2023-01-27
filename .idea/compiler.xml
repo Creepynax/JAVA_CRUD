@@ -9,13 +9,10 @@
         <module name="src" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="src" target="17" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="src" options="--add-exports jdk.javadoc/jdk.javadoc.internal.doclets.toolkit.util=ALL-UNNAMED" />
+      <module name="src" options="" />
     </option>
   </component>
 </project>
