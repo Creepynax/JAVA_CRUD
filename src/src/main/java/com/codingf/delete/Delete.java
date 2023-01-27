@@ -10,12 +10,12 @@ import java.util.Scanner;
 public class Delete {
     // méthode Delete qui prend en paramètre le nom d'une table et ne renvoie rien
     // et permet à l'utilisateur de supprimer un champ d'une table
-    public static void Delete(String nom) throws SQLException {
+    public static void Delete(String nom, String[] nomChamps) throws SQLException {
         Scanner input = new Scanner(System.in);
         System.out.println("\nVoici la table " + nom + "\n");
 
         // affiche l'ensemble de la table rentrée en paramètre
-        Read.Read(nom);
+        Read.Read(nom, nomChamps);
 
         // fait la connexion à la bdd Sakila
         Connection connection = ConnexionDB.connexionDB();
@@ -37,7 +37,7 @@ public class Delete {
         while (!repeat) {
             System.out.print("\nEntrer l'id : ");
 
-            // récupère la valeur que l'utilisateur a rentré
+            // récupère la valeur que l'utilisateur a rentrée
             String choix = input.next();
             choixDelete = 0;
 

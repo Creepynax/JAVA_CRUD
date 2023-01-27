@@ -1,23 +1,56 @@
 package com.codingf.create;
 
+import com.codingf.connexiondb.ConnexionDB;
+
 import java.sql.*;
-import java.util.ResourceBundle;
+import java.util.Scanner;
+
+
 
 public class Create {
-    static String insertSql = "INSERT INTO sakila (pays, ville) VALUES (?, ?)";
+    public static void Create(String nom, String[] TotalChamps, String[] nomChamps) throws SQLException {
+        if (nom.equals("film_actor") || nom.equals("inventory") || nom.equals("strore") || nom.equals("film_category")) {
+            System.out.println("Nous sommes navrés, vous ne pouvez pas créer de nouveaux champs dans cette table");
+        } else {
+            Scanner string = new Scanner(System.in);
+            System.out.println("\nVoici un exemple d'un champ de la table " + nom + "\n");
 
-    public static void Create(String nom, int nbChamps) {
+            // fait la connexion à la bdd Sakila
+            Connection connection = ConnexionDB.connexionDB();
+            Statement stmt = connection.createStatement();
 
-        ResourceBundle bundle = ResourceBundle.getBundle("db");
-        try (Connection connection = DriverManager.getConnection("db.host", "db.user", "db.pass")) {
-            try (PreparedStatement statement = connection.prepareStatement(insertSql)) {
-                statement.setString(1, "France");
-                statement.setString(2, "Paris");
-                int rowsAffected = statement.executeUpdate();
-                System.out.println(rowsAffected + " Colonne(s) affecté(s).");
+            ResultSet soloRead = stmt.executeQuery("SELECT * FROM " + nom + " WHERE " + nom + "_id = 15");
+            ResultSetMetaData resultSoloRead = soloRead.getMetaData();
+
+            while (soloRead.next()) {
+                for (int i = 1; i <= resultSoloRead.getColumnCount(); i++) {
+                    Object obj = soloRead.getObject(i);
+                    if (obj == null) {
+                        System.out.println("[" + nomChamps[i-1] + "] " + "null");
+                    } else
+                        System.out.println("[" + nomChamps[i-1] + "] " + obj.toString());
+                }
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+            System.out.println("\nVous allez devoir rentrer les valeurs des données de votre champ");
+            System.out.println("Seul les champs que vous pouvez remplir vous seront demandés");
+            String values = " (" + nom + "_id";
+            String donneesValues = "(NULL";
+
+            for (int j = 1; j < TotalChamps.length; j++) {
+                if (TotalChamps[j] == "?") {
+                    System.out.print("\nEntrez la valeur de la donnée [" + nomChamps[j] + "] : ");
+
+                    // récupère la valeur que l'utilisateur a rentrée
+                    String choix = string.next();
+                    donneesValues += ", " + choix.toString();
+                    values += ", " + nomChamps[j];
+                } else {
+                    donneesValues += ", " + TotalChamps[j].toString();
+                    values += ", " + nomChamps[j];
+                }
+            }
+            stmt.execute("INSERT INTO " + nom + values + ") VALUES " + donneesValues + ")");
         }
     }
 }
