@@ -60,10 +60,8 @@ public class Delete {
         // si oui, elle renvoie un message de succès à l'utilisateur
         // sinon, elle renvoie un message pour lui dire ce qu'il s'est passé
         try {
-            boolean result = stmt.execute("DELETE FROM " + nom + " WHERE "+ nom +"_id = " + choixDelete);
-            if (result) {
+            stmt.execute("DELETE FROM " + nom + " WHERE "+ nom +"_id = " + choixDelete);
                 System.out.println("\nLa ligne " + choixDelete + " a bien été supprimée");
-            }
         } catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("\nLa ligne " + choixDelete + " n'a pas été supprimée car elle est reliée à une autre table");
         }
